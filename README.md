@@ -32,7 +32,7 @@ Docker 20.10.17 or above and Python 3.6 or above.
 
 ## Installation
 
-Install packets like `python3 -m pip install setuptools xlrd copy argparse time numpy random requests math skyfield sgp4 datetime paramiko`.
+Install packets like `python3 -m pip install math sgp4 skyfield datetime numpy os copy`.
 
 ## Configuration file
 
