@@ -24,6 +24,7 @@ A bLEO emulation consists of three steps. First, the configuration file must be 
 5. `setprop.o` eBPF module.
 6. `tracer` application.
 7. `showifid` utility.
+8. `Makefile`.
 
 ## Preparation
 
