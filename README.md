@@ -11,7 +11,7 @@ bLEO is a Linux application designed to emulate large LEO (Low Earth Orbit) sate
 - Network namespaces 
 - Python
 
-The basic idea is to run as many containers as network elements (satellites, ground stations, and terminals) and connect them through virtual Ethernet interfaces (`veth`) and network namespaces. bLEO takes into account that the connections between satellites and ground stations vary over time as both the Earth and the satellites move. The delay of each veth interface is not defined using `tc` (Linux traffic control), but instead by means of an eBPF module, which enables fast delay updates.
+The basic idea is to run as many containers as network elements (satellites, ground stations, and terminals) and connect them through virtual Ethernet interfaces (`veth`) and network namespaces. bLEO takes into account that the connections between satellites and ground stations vary over time as both the Earth and the satellites move. The delay of each veth interface is not defined using `tc-netem` (Linux traffic control for network emulation), but instead by means of an eBPF module, which enables fast delay updates.
 
 A bLEO emulation consists of three steps. First, the configuration file must be set up. Second, the shell script that handles all network dynamics must be generated. Finally, the LEO network must be built.
 
