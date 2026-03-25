@@ -11,7 +11,7 @@ bLEO is a Linux application designed to emulate large LEO (Low Earth Orbit) sate
 - Network namespaces 
 - Python
 
-The basic idea is to run as many containers as network elements (satellites, ground stations, and terminals) and connect them through virtual Ethernet interfaces (veth) and network namespaces. bLEO takes into account that the connections between satellites and ground stations vary over time as both the Earth and the satellites move. The delay of each veth interface is not defined using tc (Linux traffic control), but instead by means of an eBPF module, which enables fast delay updates.
+The basic idea is to run as many containers as network elements (satellites, ground stations, and terminals) and connect them through virtual Ethernet interfaces (`veth`) and network namespaces. bLEO takes into account that the connections between satellites and ground stations vary over time as both the Earth and the satellites move. The delay of each veth interface is not defined using `tc` (Linux traffic control), but instead by means of an eBPF module, which enables fast delay updates.
 
 A bLEO emulation consists of three steps. First, the configuration file must be set up. Second, the shell script that handles all network dynamics must be generated. Finally, the LEO network must be built.
 
@@ -20,9 +20,9 @@ A bLEO emulation consists of three steps. First, the configuration file must be 
 1. Configuration file (`bleo.conf`).
 2. Event Generator (`eventGenerator.py`).
 3. Configuration Manager (`bleo.sh`).
-4. `updatemap` application.
-5. `setprop.o` eBPF module.
-6. `tracer` application.
+4. `updatemap` application (files: `updatemap.c`, `updatemap.o`, `updatemap`).
+5. `setprop.o` eBPF module (files: `setprop.c`, `bpf_elf.h`, `setprop.o`).
+6. `tracer` application (files: `tracer.c`, `tracer.o`, `tracer`).
 7. `showifid` utility.
 8. `Makefile`.
 
@@ -40,7 +40,7 @@ To begin with, you need to define all the parameters in the configuration file (
 
 `docker_img="frr_ditg:v1"`
 
-This is the name of the Docker image used to emulate each LEO satellite, ground station, and terminal (it is assumed that the docker virtualization environment is enabled on the system). It is provide a `Dockerfile` for building an image based on Ubuntu with the utilities `frr` (ospf), `ditg` (Distributed Internet Traffic Generator) and `iperf` already installed. To generate this docker image just run: `docker build -t frr_ditg:v1 . --no-cache`
+This is the name of the Docker image used to emulate each LEO satellite, ground station, and terminal (it is assumed that the docker virtualization environment is enabled on the system). It is provide a `Dockerfile` for building an image based on Ubuntu with the utilities `frr` (OSPF), `ditg` (Distributed Internet Traffic Generator) and `iperf` already installed. To generate this docker image just run: `docker build -t frr_ditg:v1 . --no-cache`
 
 `updatemap=/usr/local/bin/updatemap`
 
