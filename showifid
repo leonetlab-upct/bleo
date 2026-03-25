@@ -1,0 +1,50 @@
+#!/bin/bash
+
+if [ -n "$1" ]; then
+   mode=$1
+else mode=""
+fi
+
+
+clearif () {
+if_north="";
+if_ifgs="";
+if_linktogs="";
+if_west="";
+if_east="";
+if_south="";
+}
+
+
+if [ "$mode" = "matrix" ]; then printf "%-10s%-10s%-10s%-10s%-10s%-10s%-10s\n" "node" "N" "S" "W" "E" "SATtoGS" "GStoSAT"; fi
+running=$(docker container list | tail -n +2 | awk -F " " '{print $NF}' | sort | grep -v term)
+
+for node in $running; do
+   if_ifgs=`ip netns exec $node ip link | grep ifgs | awk -F ":" '{print $1}'`
+   if_west=`ip netns exec $node ip link | grep west | awk -F ":" '{print $1}'`
+   if_south=`ip netns exec $node ip link | grep south | awk -F ":" '{print $1}'`
+   if_north=`ip netns exec $node ip link | grep north | awk -F ":" '{print $1}'`
+   if_east=`ip netns exec $node ip link | grep east | awk -F ":" '{print $1}'`
+   if_linktogs=`ip netns exec $node ip link | grep LinkToGS | awk -F ":" '{print $1}'`
+
+   if [ "$if_west" = ""  ];     then if_west="---"; fi
+   if [ "$if_east" = ""  ];     then if_east="---"; fi
+   if [ "$if_south" = ""  ];    then if_south="---"; fi
+   if [ "$if_north" = ""  ];    then if_north="---"; fi
+   if [ "$if_linktogs" = ""  ]; then if_linktogs="---"; fi
+   if [ "$if_ifgs" = ""  ];     then if_ifgs="---"; fi
+
+   if [ "$mode" = "matrix" ]; then
+      printf "%-10s%-10s%-10s%-10s%-10s%-10s%-10s\n" "$node" "$if_north" "$if_south" "$if_west" "$if_east" "$if_linktogs" "$if_ifgs"
+   else
+      echo -e "${node}north\t$if_north"
+      echo -e "${node}south\t$if_south"
+      echo -e "${node}west\t$if_west"
+      echo -e "${node}east\t$if_east"
+      echo -e "${node}LinkToGS\t$if_linktogs"
+      echo -e "${node}ifgs\t$if_ifgs"
+   fi
+
+   clearif
+done
+
