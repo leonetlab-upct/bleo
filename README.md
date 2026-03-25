@@ -44,15 +44,15 @@ This is the name of the Docker image used to emulate each LEO satellite, ground 
 
 `updatemap=/usr/local/bin/updatemap`
 
-This specifies the location of the `updatemap` application, which is used by `bleo.sh` to update the delays of the LEO network interfaces. A version compiled for x86_64 is provided; for other platforms, simply run `make`. 
+This specifies the location of the `updatemap` application, which is used by `bleo.sh` to update the delays of the LEO network interfaces. A version compiled for x86_64 is provided; for other platforms, simply run `make`. If bleo has been installed in your home directory, you can simply set updatemap=~/bleo/updatemap`
 
 `setprop=/usr/local/bin/setprop.o`
 
-This is the location of the `setprop.o` eBPF module, which is used by `updatemap` application to set up the network link delays. The script `bleo.sh` is in charge of loading it at each one of the network interfaces. A version compiled for x86_64 is provided; for other platforms, simply run `make`.
+This is the location of the `setprop.o` eBPF module, which is used by `updatemap` application to set up the network link delays. The script `bleo.sh` is in charge of loading it at each one of the network interfaces. A version compiled for x86_64 is provided; for other platforms, simply run `make`. If bleo has been installed in your home directory, you can simply set setprop=~/bleo/setprop.o`
 
 `tracer=/usr/local/bin/tracer`
 
-This is the location of the `tracer` application. This application helps you out to trace the path among LEO satellites that a connection is using. A version compiled for x86_64 is provided; for other platforms, simply run `make`.
+This is the location of the `tracer` application. This application helps you out to trace the path among LEO satellites that a connection is using. A version compiled for x86_64 is provided; for other platforms, simply run `make`. If bleo has been installed in your home directory, you can simply set tracer=~/bleo/tracer`
 
 `numgs=2`, `gs_coords="50.110924,8.682127;46.635700,14.311817"`
 
@@ -133,6 +133,8 @@ Each network element has an `ID`, starting from 1 to `maxp` x `maxs` for satelli
 A LEO satellite has 5 network interfaces, which is the name of the docker container followed by `north`, `south` (intra-plane) `east`, `west` (inter-plane) or `LinkToGS` for link that connects the satellite to the ground station. For example, the five interfaces of satellite `p02s15` are `p02s15north`, `p02s15south`, `p02s15east`, `p02s15west` and `p02s15LinkToGS`. For ground stations, it is `ifgs` followed by the ground station `ID`.
 
 For IP addressing, bLEO uses a private class A scheme (`10.X.Y.Z`). The rule for determining the address revolves around the `north` and `east` interfaces. The IP of the interface connecting the `IDsrc` (`north`/`east`) to `IDdst` (`south`/`west`) is determined as follow: byte `X` is set with the first 8 bits of the `IDsrc`. Byte `Y` is set with the first 8 bits of the `IDdst`. Finally, the last byte is set using the last three bits of the `IDsrc`, together with the last three bits of `IDdst`, together with bits `01` for the `north`/`east` interface or `11` for `south`/`west` interface (the other end). For example, IP of the interface `p02s15north` (`ID=64`, assuming again `maxp`=12 and `maxs`=24) is `10.64.65.1` and the IP of the interface `p03s21west` (`ID=94`) is set following the rules for the interface `p02s21east` (`ID=70`) as `10.70.94.2`.
+
+Additionally, each element has an IP loopback interface (apart from 127.0.0.1) which IP starts with 172.16. The rest of the bytes are determined following the same rule describet above but considering only the ID of the element. For example, the IP of the loopback interface of satellite `p10s18` (ID=259) is `172.16.3.32`.
 
 The `tracer` application is intended to show how many packets have been sent for each link interface. This utility can be used to infer the path followed by the IP datagrams in a LEO network
 
