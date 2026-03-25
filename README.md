@@ -28,7 +28,7 @@ A bLEO emulation consists of three steps. First, the configuration file must be 
 
 ## Preparation
 
-Docker 20.10.17 or above and Python 3.6 or above. Libraries `libbpd.so` and `libbpf-devel` must be installed. Although the `bpftool` command-line application is not necessary to manage eBPF modules, it could be useful to quickly check the status of the eBPF maps (delay asigned to each interface and number of bytes sent for each one) via the shell command-line.
+Docker 20.10.17 or above and Python 3.6 or above. Libraries `libbpd.so` and `libbpf-devel` must be installed. Although the `bpftool` command-line application is not necessary to manage eBPF modules and maps, it could be useful to quickly check the status of the eBPF maps defined in bleo (delay asigned to each interface and number of bytes sent for each one) via the shell command-line.
 
 ## Installation
 
