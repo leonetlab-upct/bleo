@@ -10,6 +10,7 @@ bLEO is a Linux application designed to emulate large LEO (Low Earth Orbit) sate
 - Linux bridging 
 - Network namespaces 
 - Python
+- gcc and clang (LLVM) compilers
 
 The basic idea is to run as many containers as network elements (satellites, ground stations, and terminals) and connect them through virtual Ethernet interfaces (`veth`) and network namespaces. bLEO takes into account that the connections between satellites and ground stations vary over time as both the Earth and the satellites move. The delay of each veth interface is not defined using `tc-netem` (Linux traffic control for network emulation), but instead by means of an eBPF module, which enables fast delay updates.
 
@@ -32,7 +33,7 @@ Docker 20.10.17 or above and Python 3.6 or above. Libraries `libbpd.so` and `lib
 
 ## Installation
 
-Install packets like `python3 -m pip install math sgp4 skyfield datetime numpy os copy`.
+Install packets like `python3 -m pip install math sgp4 skyfield datetime numpy os copy`. If for any reason you need to recompile the utility tools (`updatemap`, etc.), remember to first install `gcc` (which is usually already installed) and `clang`.
 
 ## Configuration file
 
