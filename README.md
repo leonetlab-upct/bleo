@@ -33,7 +33,7 @@ Docker 20.10.17 or above and Python 3.6 or above. Libraries `libbpd.so` and `lib
 
 ## Installation
 
-Install packets like `python3 -m pip install math sgp4 skyfield datetime numpy os copy`. If for any reason you need to recompile the utility tools (`updatemap`, etc.), remember to first install `gcc` (which is usually already installed) and `clang`.
+Install packets like `python3 -m pip install math sgp4 skyfield datetime numpy os copy`. If for any reason you need to recompile the utility tools (`updatemap`, etc.) or the eBPF module, remember to first install `gcc` (which is usually already installed) and `clang`.
 
 ## Configuration file
 
