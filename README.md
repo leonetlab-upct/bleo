@@ -20,9 +20,9 @@ A bLEO emulation consists of three steps. First, the configuration file must be 
 1. Configuration file (`bleo.conf`).
 2. Event Generator (`eventGenerator.py`).
 3. Configuration Manager (`bleo.sh`).
-4. `updatemap` application (files: `updatemap.c`, `updatemap.o`, `updatemap`).
+4. `updatemap` application (files: `updatemap.c`, `updatemap`).
 5. `setprop.o` eBPF module (files: `setprop.c`, `bpf_elf.h`, `setprop.o`).
-6. `tracer` application (files: `tracer.c`, `tracer.o`, `tracer`).
+6. `tracer` application (files: `tracer.c`, `tracer`).
 7. `showifid` utility.
 8. `Makefile`.
 
