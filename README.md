@@ -28,7 +28,7 @@ A bLEO emulation consists of three steps. First, the configuration file must be 
 
 ## Preparation
 
-Docker 20.10.17 or above and Python 3.6 or above.
+Docker 20.10.17 or above and Python 3.6 or above. Libraries `libbpd.so` and ´libbpf-devel` must be installed. The `bpftool` command line application for managing eBPF modules is not needed but is recomended.
 
 ## Installation
 
