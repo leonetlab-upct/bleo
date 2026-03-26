@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import argparse
 import math
 from sgp4.api import Satrec, WGS84
 from skyfield.api import load, wgs84, EarthSatellite
@@ -8,7 +7,6 @@ from datetime import datetime
 import numpy as np
 import os
 from copy import deepcopy
-import subprocess
 
 global maxp, maxs, gs, numsat, seam
 
