@@ -41,7 +41,7 @@ The following components are required to run bLEO:
 
 - Docker >= 20.10.17  
 - Python >= 3.6  
-- runtime library for `libbpf` (`libbpf.so`)
+- Runtime library for `libbpf` (`libbpf.so`)
 
 Although not strictly required, the `bpftool` command-line utility can be useful for inspecting the eBPF maps used by bLEO (e.g., interface delays and traffic counters).
 
