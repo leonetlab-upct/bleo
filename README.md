@@ -12,7 +12,7 @@ bLEO is a Linux-based tool designed to emulate large-scale LEO (Low Earth Orbit)
 - Python (for event generation)
 - gcc and clang (LLVM) compilers
 
-The core idea is to run one container per network element (satellites, ground stations, and terminals) and connect them through virtual Ethernet interfaces (`veth`) and network namespaces. bLEO models time-varying connectivity between satellites and ground stations, driven by satellite movement and Earth rotation. Instead of using tc-netem, link delay is controlled via an eBPF module, enabling near-instantaneous updates directly in the kernel datapath. In LEO constellations, link characteristics such as delay and connectivity change frequently, requiring efficient mechanisms to update network conditions at high rates.
+The core idea is to run one container per network element (satellites, ground stations, and terminals) and connect them through virtual Ethernet interfaces (`veth`) and network namespaces. bLEO models time-varying connectivity between satellites and ground stations, driven by satellite movement and Earth rotation. Instead of using `tc-netem`, link delay is controlled via an eBPF module, enabling near-instantaneous updates directly in the kernel datapath. In LEO constellations, link characteristics such as delay and connectivity change frequently, requiring efficient mechanisms to update network conditions at high rates.
 
 A typical execution workflow is:
 
@@ -24,7 +24,7 @@ A typical execution workflow is:
 ## Components
 
 1. Configuration file (`bleo.conf`): defines the LEO scenario parameters.
-2. Event Generator (`eventGenerator.py`): generates time-dependent topology events.
+2. Event Generator (`eventGenerator.py`): generates time-dependent topology events (`topology_init.sh` and `events_dynamic.sh`).
 3. Configuration Manager (`bleo.sh`): deploys and manages the network.
 4. `Dockerfile`: builds an Ubuntu-based image for bLEO components.
 5. `updatemap` application (files `updatemap.c`, `updatemap`): updates interface delays via eBPF maps.
@@ -55,13 +55,67 @@ The following tools are only required if you need to recompile the utilities (`u
 
 ## Installation
 
+### 1. Clone the repository
+
+Clone the bLEO repository into your home directory:
+
+`git clone https://github.com/leonetlab-upct/bleo.git ~/bleo`
+
+`cd ~/bleo`
+
+### 2. Install Python dependencies
+
 Install the required Python dependencies:
 
 `python3 -m pip install sgp4 skyfield numpy`
 
+### 3. (Optional) Build utilities and eBPF module
+
+Precompiled binaries are provided for x86_64 systems. If you are using a different architecture or want to rebuild the tools, run:
+
+`make`
+
+This will compile:
+
+- `updatemap`
+- `tracer`
+- `setprop.o`
+
+### 4. (Optional) Install binaries system-wide
+
+If you prefer to install the tools system-wide, you can copy them to `/usr/local/bin`:
+
+`sudo cp updatemap tracer setprop.o /usr/local/bin/`
+
+Otherwise, you can keep them in `~/bleo` and reference them directly in `bleo.conf`.
+
+## Quick Start
+
+Run a minimal bLEO scenario using the default configuration:
+
+```bash
+# Clone and enter the repository
+git clone https://github.com/leonetlab-upct/bleo.git ~/bleo
+cd ~/bleo
+
+# Install Python dependencies
+python3 -m pip install sgp4 skyfield numpy
+
+# Generate topology events
+python3 eventGenerator.py
+
+# Deploy the network
+sudo ./bleo.sh --config bleo.conf
+
+# Start dynamic emulation
+sudo ./events_dynamic.sh
+```
+
+The default configuration (`bleo.conf`) allows running a basic scenario out of the box. To customize the scenario, you can modify the configuration file as described below.
+
 ## Configuration file
 
-First, you need to define all the parameters in the configuration file (`bleo.conf`). Below is a brief explanation of each of the configuration variables:
+The following paths assume that bLEO is located in `~/bleo`. Below is a brief explanation of each of the configuration variables:
 
 `docker_img="frr_ditg:v1"`
 
@@ -69,15 +123,15 @@ This is the name of the Docker image used to emulate each LEO satellite, ground 
 
 `updatemap=/usr/local/bin/updatemap`
 
-This specifies the location of the `updatemap` application, which is used by `bleo.sh` to update the delays of the LEO network interfaces. A version compiled for x86_64 is provided; for other platforms, simply run `make`. If bLEO has been installed in your home directory, you can simply set `updatemap=~/bleo/updatemap`
+This specifies the location of the `updatemap` application, which is used by `bleo.sh` to update the delays of the LEO network interfaces. A version compiled for x86_64 is provided; for other platforms, simply run `make`. If bLEO is located in `~/bleo`, you can simply set `updatemap=~/bleo/updatemap`
 
 `setprop=/usr/local/bin/setprop.o`
 
-This is the location of the `setprop.o` eBPF module, which is used by the `updatemap` application to set up the network link delays. The script `bleo.sh` is responsible for loading it on each network interface. A version compiled for x86_64 is provided; for other platforms, simply run `make`. If bLEO has been installed in your home directory, you can simply set `setprop=~/bleo/setprop.o`
+This is the location of the `setprop.o` eBPF module, which is used by the `updatemap` application to set up the network link delays. The script `bleo.sh` is responsible for loading it on each network interface. A version compiled for x86_64 is provided; for other platforms, simply run `make`. If bLEO is located in `~/bleo`, you can simply set `setprop=~/bleo/setprop.o`
 
 `tracer=/usr/local/bin/tracer`
 
-This is the location of the `tracer` application. This application allows tracing the path across LEO satellites used by a connection. A version compiled for x86_64 is provided; for other platforms, simply run `make`. If bLEO has been installed in your home directory, you can simply set `tracer=~/bleo/tracer`
+This is the location of the `tracer` application. This application allows tracing the path across LEO satellites used by a connection. A version compiled for x86_64 is provided; for other platforms, simply run `make`. If bLEO is located in `~/bleo`, you can simply set `tracer=~/bleo/tracer`
 
 `numgs=2`, `gs_coords="50.110924,8.682127;46.635700,14.311817"`
 
@@ -101,7 +155,7 @@ Set this variable to yes if you want to build an IP network. The way IP addresse
 
 `ospf="yes"`
 
-Set this variable to yes if you want to build an OSPF network. It is expected that the docker image used in the emulation must contain the software frr.
+Set this variable to yes if you want to build an OSPF network. It is expected that the Docker image used in the emulation must contain the software frr.
 
 `hello_interval="10"`
 
@@ -137,7 +191,7 @@ The next step is to build the LEO network. To do so, run as root:
 
 `sudo ./bleo.sh --config path_to_bleo.conf`
 
-Then wait for the network to be deployed. For large scenarios (e.g., 12 orbital planes and 24 satellites per plane), deployment may take up to 10 minutes.
+Then wait until the network is fully deployed. For large scenarios (e.g., 12 orbital planes and 24 satellites per plane), deployment may take up to 10 minutes.
 
 ## Movement Manager
 
@@ -159,7 +213,7 @@ Each network element is also associated with a Docker container name. Satellite 
 
 A LEO satellite has five network interfaces. Their names are formed by appending `north`, `south` (intra-plane), `east`, `west` (inter-plane), or `LinkToGS` to the name of the Docker container. For example, the five interfaces of satellite `p02s15` are `p02s15north`, `p02s15south`, `p02s15east`, `p02s15west` and `p02s15LinkToGS`. For ground stations, the interface name is `ifgs` followed by the ground station `ID`.
 
-For IP addressing, bLEO uses a private class A scheme (`10.X.Y.Z`). The addressing rule is based on the `north` and `east` interfaces. The IP address of the interface connecting the `IDsrc` (`north`/`east`) to `IDdst` (`south`/`west`) is determined as follows: byte `X` is set to the first 8 bits of the `IDsrc`. Byte `Y` is set to the first 8 bits of the `IDdst`. Finally, the last byte is set using the last three bits of the `IDsrc`, together with the last three bits of `IDdst`, together with bits `01` for the `north`/`east` interface or `11` for `south`/`west` interface (the other end). For example, the IP address of the interface `p02s15north` (`ID=64`, assuming again `maxp`=12 and `maxs`=24) is `10.64.65.1` and the IP address of the interface `p03s21west` (`ID=94`) is `10.70.94.2`, following the rules derived from interface `p02s21east` (`ID=70`).
+For IP addressing, bLEO uses a private class A scheme (`10.X.Y.Z`). The addressing rule is based on the `north` and `east` interfaces. The IP address of the interface connecting the `IDsrc` (`north`/`east`) to `IDdst` (`south`/`west`) is determined as follows: byte `X` is set to the first 8 bits of the `IDsrc`. Byte `Y` is set to the first 8 bits of the `IDdst`. Finally, the last byte is set using the last three bits of the `IDsrc`, together with the last three bits of `IDdst`, and bits `01` for the `north`/`east` interface or `11` for `south`/`west` interface (the other end). For example, the IP address of the interface `p02s15north` (`ID=64`, assuming again `maxp`=12 and `maxs`=24) is `10.64.65.1` and the IP address of the interface `p03s21west` (`ID=94`) is `10.70.94.2`, following the rules derived from interface `p02s21east` (`ID=70`).
 
 Additionally, each element has a loopback interface (apart from `127.0.0.1`) with a private IP address in the `172.16.0.0/16` range. The last two bytes are determined following the same rules described above but considering only the `ID` of the element. For example, the IP address of the loopback interface of satellite `p02s13` (`ID=62`) is `172.16.62.0`, while that of `p10s18` (`ID=259`) is `172.16.3.32`.
 
