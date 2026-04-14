@@ -69,7 +69,20 @@ Install the required Python dependencies:
 
 `python3 -m pip install sgp4 skyfield numpy`
 
-### 3. (Optional) Build utilities and eBPF module
+### 3. Build the Docker image
+
+bLEO requires a Docker image containing the necessary networking tools (e.g., FRR, D-ITG, iperf). A `Dockerfile` is provided for this purpose.
+
+To build the image, run:
+
+`docker build -t frr_ditg:v1 . --no-cache`
+
+Make sure that the image name matches the value specified in the `bleo.conf` file:
+`docker_img="frr_ditg:v1"`
+
+If the image is not built beforehand, the deployment step (`bleo.sh`) will fail.
+
+### 4. (Optional) Build utilities and eBPF module
 
 Precompiled binaries are provided for x86_64 systems. If you are using a different architecture or want to rebuild the tools, run:
 
@@ -81,7 +94,7 @@ This will compile:
 - `tracer`
 - `setprop.o`
 
-### 4. (Optional) Install binaries system-wide
+### 5. (Optional) Install binaries system-wide
 
 If you prefer to install the tools system-wide, you can copy them to `/usr/local/bin`:
 
@@ -97,6 +110,9 @@ Run a minimal bLEO scenario using the default configuration:
 # Clone and enter the repository
 git clone https://github.com/leonetlab-upct/bleo.git ~/bleo
 cd ~/bleo
+
+# Build Docker image
+docker build -t frr_ditg:v1 . --no-cache
 
 # Install Python dependencies
 python3 -m pip install sgp4 skyfield numpy
