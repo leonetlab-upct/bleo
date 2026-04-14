@@ -80,7 +80,9 @@ To build the image, run:
 Make sure that the image name matches the value specified in the `bleo.conf` file:
 `docker_img="frr_ditg:v1"`
 
-If the image is not built beforehand, the deployment step (`bleo.sh`) will fail.
+Alternatively, you can use a different image by modifying the `docker_img` parameter in `bleo.conf`.
+
+This step is required before running bLEO. Otherwise, the deployment script (`bleo.sh`) will fail because the Docker image will not be available.
 
 ### 4. (Optional) Build utilities and eBPF module
 
