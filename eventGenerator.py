@@ -64,17 +64,20 @@ def ifname(src, dst):
         return interface
 
 def get_ip(src, dst, category):
-    byte1 = src & 255
-    byte2 = dst & 255
-    byte3src = (src & 1792) >> 3
-    byte3dst = (dst & 1792) >>6
-
     if category == 'north' or category == 'east' or category == 'sattogs':
+        byte1 = src & 255
+        byte2 = dst & 255
+        byte3src = (src & 1792) >> 3
+        byte3dst = (dst & 1792) >> 6
         byte3 = byte3src + byte3dst + 1
+        return '10' + '.' + str(byte1) + '.' + str(byte2) + '.' + str(byte3)
     if category == 'south' or category == 'west' or category == 'gstosat':
+        byte1 = dst & 255
+        byte2 = src & 255
+        byte3src = (dst & 1792) >> 3
+        byte3dst = (src & 1792) >> 6
         byte3 = byte3src + byte3dst + 2
-
-    return '10' + '.' + str(byte1) + '.' + str(byte2) + '.' + str(byte3)
+        return '10' + '.' + str(byte1) + '.' + str(byte2) + '.' + str(byte3)
 
 def eastif(src):
     if src > (maxp -1) * maxs and seam == 1:
