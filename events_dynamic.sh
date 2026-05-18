@@ -7,8 +7,8 @@ sleep 34
 echo "=== EVENT time 36 ==="
 echo ">>> ip netns exec p06s01 ip addr add 10.50.98.1/30 dev p06s01LinkToGS"
 ip netns exec p06s01 ip addr add 10.50.98.1/30 dev p06s01LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.50.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.50.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.50.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.50.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p06s01 ip link | grep p06s01LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s01 ip link | grep p06s01LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 3.0"
@@ -23,8 +23,8 @@ sleep 60
 echo "=== EVENT time 96 ==="
 echo ">>> ip netns exec p06s01 ip addr del 10.50.98.1/30 dev p06s01LinkToGS"
 ip netns exec p06s01 ip addr del 10.50.98.1/30 dev p06s01LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.50.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.50.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.50.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.50.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p06s01 ip link | grep p06s01LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s01 ip link | grep p06s01LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -39,8 +39,8 @@ sleep 3
 echo "=== EVENT time 99 ==="
 echo ">>> ip netns exec p06s01 ip addr add 10.50.97.1/30 dev p06s01LinkToGS"
 ip netns exec p06s01 ip addr add 10.50.97.1/30 dev p06s01LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.50.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.50.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.50.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.50.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p06s01 ip link | grep p06s01LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s01 ip link | grep p06s01LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 5.0"
@@ -615,8 +615,8 @@ sleep 18
 echo "=== EVENT time 161 ==="
 echo ">>> ip netns exec p06s01 ip addr del 10.50.97.1/30 dev p06s01LinkToGS"
 ip netns exec p06s01 ip addr del 10.50.97.1/30 dev p06s01LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.50.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.50.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.50.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.50.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p06s01 ip link | grep p06s01LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s01 ip link | grep p06s01LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -2843,8 +2843,8 @@ sleep 15
 echo "=== EVENT time 511 ==="
 echo ">>> ip netns exec p01s02 ip addr add 10.11.97.1/30 dev p01s02LinkToGS"
 ip netns exec p01s02 ip addr add 10.11.97.1/30 dev p01s02LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.11.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.11.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.11.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.11.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p01s02 ip link | grep p01s02LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p01s02 ip link | grep p01s02LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 7.0"
@@ -3055,8 +3055,8 @@ sleep 22
 echo "=== EVENT time 573 ==="
 echo ">>> ip netns exec p01s02 ip addr del 10.11.97.1/30 dev p01s02LinkToGS"
 ip netns exec p01s02 ip addr del 10.11.97.1/30 dev p01s02LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.11.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.11.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.11.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.11.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p01s02 ip link | grep p01s02LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p01s02 ip link | grep p01s02LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -3071,8 +3071,8 @@ sleep 4
 echo "=== EVENT time 577 ==="
 echo ">>> ip netns exec p02s02 ip addr add 10.19.98.1/30 dev p02s02LinkToGS"
 ip netns exec p02s02 ip addr add 10.19.98.1/30 dev p02s02LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.19.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.19.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.19.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.19.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p02s02 ip link | grep p02s02LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s02 ip link | grep p02s02LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 7.0"
@@ -3467,12 +3467,12 @@ sleep 1
 echo "=== EVENT time 617 ==="
 echo ">>> ip netns exec p01s02 ip addr add 10.11.98.1/30 dev p01s02LinkToGS"
 ip netns exec p01s02 ip addr add 10.11.98.1/30 dev p01s02LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.11.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.11.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.11.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.11.98.2/30 dev ifgs98
 echo ">>> ip netns exec p02s02 ip addr del 10.19.98.1/30 dev p02s02LinkToGS"
 ip netns exec p02s02 ip addr del 10.19.98.1/30 dev p02s02LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.19.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.19.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.19.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.19.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p01s02 ip link | grep p01s02LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p01s02 ip link | grep p01s02LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 7.0"
@@ -3675,8 +3675,8 @@ sleep 11
 echo "=== EVENT time 637 ==="
 echo ">>> ip netns exec p01s02 ip addr del 10.11.98.1/30 dev p01s02LinkToGS"
 ip netns exec p01s02 ip addr del 10.11.98.1/30 dev p01s02LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.11.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.11.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.11.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.11.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p01s02 ip link | grep p01s02LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p01s02 ip link | grep p01s02LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -4059,8 +4059,8 @@ sleep 29
 echo "=== EVENT time 752 ==="
 echo ">>> ip netns exec p06s00 ip addr add 10.49.98.1/30 dev p06s00LinkToGS"
 ip netns exec p06s00 ip addr add 10.49.98.1/30 dev p06s00LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.49.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.49.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.49.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.49.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p06s00 ip link | grep p06s00LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s00 ip link | grep p06s00LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 3.0"
@@ -4259,8 +4259,8 @@ sleep 12
 echo "=== EVENT time 812 ==="
 echo ">>> ip netns exec p06s00 ip addr del 10.49.98.1/30 dev p06s00LinkToGS"
 ip netns exec p06s00 ip addr del 10.49.98.1/30 dev p06s00LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.49.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.49.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.49.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.49.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p06s00 ip link | grep p06s00LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s00 ip link | grep p06s00LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -4275,8 +4275,8 @@ sleep 4
 echo "=== EVENT time 816 ==="
 echo ">>> ip netns exec p06s00 ip addr add 10.49.97.1/30 dev p06s00LinkToGS"
 ip netns exec p06s00 ip addr add 10.49.97.1/30 dev p06s00LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.49.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.49.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.49.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.49.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p06s00 ip link | grep p06s00LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s00 ip link | grep p06s00LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 4.0"
@@ -4671,8 +4671,8 @@ sleep 10
 echo "=== EVENT time 878 ==="
 echo ">>> ip netns exec p06s00 ip addr del 10.49.97.1/30 dev p06s00LinkToGS"
 ip netns exec p06s00 ip addr del 10.49.97.1/30 dev p06s00LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.49.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.49.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.49.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.49.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p06s00 ip link | grep p06s00LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s00 ip link | grep p06s00LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -6811,8 +6811,8 @@ sleep 1
 echo "=== EVENT time 1227 ==="
 echo ">>> ip netns exec p02s01 ip addr add 10.18.97.1/30 dev p02s01LinkToGS"
 ip netns exec p02s01 ip addr add 10.18.97.1/30 dev p02s01LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.18.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.18.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.18.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.18.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p02s01 ip link | grep p02s01LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s01 ip link | grep p02s01LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 6.0"
@@ -7115,12 +7115,12 @@ sleep 10
 echo "=== EVENT time 1272 ==="
 echo ">>> ip netns exec p01s01 ip addr add 10.10.97.1/30 dev p01s01LinkToGS"
 ip netns exec p01s01 ip addr add 10.10.97.1/30 dev p01s01LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.10.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.10.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.10.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.10.97.2/30 dev ifgs97
 echo ">>> ip netns exec p02s01 ip addr del 10.18.97.1/30 dev p02s01LinkToGS"
 ip netns exec p02s01 ip addr del 10.18.97.1/30 dev p02s01LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.18.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.18.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.18.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.18.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p01s01 ip link | grep p01s01LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p01s01 ip link | grep p01s01LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 7.0"
@@ -7327,8 +7327,8 @@ sleep 14
 echo "=== EVENT time 1290 ==="
 echo ">>> ip netns exec p01s01 ip addr del 10.10.97.1/30 dev p01s01LinkToGS"
 ip netns exec p01s01 ip addr del 10.10.97.1/30 dev p01s01LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.10.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.10.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.10.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.10.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p01s01 ip link | grep p01s01LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p01s01 ip link | grep p01s01LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -7343,8 +7343,8 @@ sleep 3
 echo "=== EVENT time 1293 ==="
 echo ">>> ip netns exec p02s01 ip addr add 10.18.98.1/30 dev p02s01LinkToGS"
 ip netns exec p02s01 ip addr add 10.18.98.1/30 dev p02s01LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.18.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.18.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.18.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.18.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p02s01 ip link | grep p02s01LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s01 ip link | grep p02s01LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 6.0"
@@ -7735,8 +7735,8 @@ sleep 2
 echo "=== EVENT time 1353 ==="
 echo ">>> ip netns exec p02s01 ip addr del 10.18.98.1/30 dev p02s01LinkToGS"
 ip netns exec p02s01 ip addr del 10.18.98.1/30 dev p02s01LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.18.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.18.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.18.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.18.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p02s01 ip link | grep p02s01LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s01 ip link | grep p02s01LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -8119,8 +8119,8 @@ sleep 49
 echo "=== EVENT time 1468 ==="
 echo ">>> ip netns exec p06s07 ip addr add 10.56.98.1/30 dev p06s07LinkToGS"
 ip netns exec p06s07 ip addr add 10.56.98.1/30 dev p06s07LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.56.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.56.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.56.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.56.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p06s07 ip link | grep p06s07LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s07 ip link | grep p06s07LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 4.0"
@@ -8331,8 +8331,8 @@ sleep 5
 echo "=== EVENT time 1528 ==="
 echo ">>> ip netns exec p06s07 ip addr del 10.56.98.1/30 dev p06s07LinkToGS"
 ip netns exec p06s07 ip addr del 10.56.98.1/30 dev p06s07LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.56.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.56.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.56.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.56.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p06s07 ip link | grep p06s07LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s07 ip link | grep p06s07LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -8347,8 +8347,8 @@ sleep 4
 echo "=== EVENT time 1532 ==="
 echo ">>> ip netns exec p06s07 ip addr add 10.56.97.1/30 dev p06s07LinkToGS"
 ip netns exec p06s07 ip addr add 10.56.97.1/30 dev p06s07LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.56.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.56.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.56.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.56.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p06s07 ip link | grep p06s07LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s07 ip link | grep p06s07LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 4.0"
@@ -8743,8 +8743,8 @@ sleep 12
 echo "=== EVENT time 1594 ==="
 echo ">>> ip netns exec p06s07 ip addr del 10.56.97.1/30 dev p06s07LinkToGS"
 ip netns exec p06s07 ip addr del 10.56.97.1/30 dev p06s07LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.56.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.56.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.56.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.56.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p06s07 ip link | grep p06s07LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s07 ip link | grep p06s07LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -11155,8 +11155,8 @@ sleep 3
 echo "=== EVENT time 1944 ==="
 echo ">>> ip netns exec p02s00 ip addr add 10.17.97.1/30 dev p02s00LinkToGS"
 ip netns exec p02s00 ip addr add 10.17.97.1/30 dev p02s00LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.17.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.17.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.17.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.17.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p02s00 ip link | grep p02s00LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s00 ip link | grep p02s00LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 5.0"
@@ -11195,8 +11195,8 @@ sleep 1
 echo "=== EVENT time 2006 ==="
 echo ">>> ip netns exec p02s00 ip addr del 10.17.97.1/30 dev p02s00LinkToGS"
 ip netns exec p02s00 ip addr del 10.17.97.1/30 dev p02s00LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.17.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.17.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.17.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.17.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p02s00 ip link | grep p02s00LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s00 ip link | grep p02s00LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -11211,8 +11211,8 @@ sleep 3
 echo "=== EVENT time 2009 ==="
 echo ">>> ip netns exec p02s00 ip addr add 10.17.98.1/30 dev p02s00LinkToGS"
 ip netns exec p02s00 ip addr add 10.17.98.1/30 dev p02s00LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.17.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.17.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.17.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.17.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p02s00 ip link | grep p02s00LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s00 ip link | grep p02s00LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 5.0"
@@ -11791,8 +11791,8 @@ sleep 19
 echo "=== EVENT time 2070 ==="
 echo ">>> ip netns exec p02s00 ip addr del 10.17.98.1/30 dev p02s00LinkToGS"
 ip netns exec p02s00 ip addr del 10.17.98.1/30 dev p02s00LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.17.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.17.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.17.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.17.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p02s00 ip link | grep p02s00LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s00 ip link | grep p02s00LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -12359,8 +12359,8 @@ sleep 8
 echo "=== EVENT time 2184 ==="
 echo ">>> ip netns exec p06s06 ip addr add 10.55.98.1/30 dev p06s06LinkToGS"
 ip netns exec p06s06 ip addr add 10.55.98.1/30 dev p06s06LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.55.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.55.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.55.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.55.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p06s06 ip link | grep p06s06LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s06 ip link | grep p06s06LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 5.0"
@@ -12387,8 +12387,8 @@ sleep 34
 echo "=== EVENT time 2245 ==="
 echo ">>> ip netns exec p06s06 ip addr del 10.55.98.1/30 dev p06s06LinkToGS"
 ip netns exec p06s06 ip addr del 10.55.98.1/30 dev p06s06LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.55.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.55.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.55.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.55.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p06s06 ip link | grep p06s06LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s06 ip link | grep p06s06LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -12403,8 +12403,8 @@ sleep 3
 echo "=== EVENT time 2248 ==="
 echo ">>> ip netns exec p06s06 ip addr add 10.55.97.1/30 dev p06s06LinkToGS"
 ip netns exec p06s06 ip addr add 10.55.97.1/30 dev p06s06LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.55.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.55.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.55.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.55.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p00s00 ip link | grep p00s00east | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p00s00 ip link | grep p00s00east | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 17.0"
@@ -12783,8 +12783,8 @@ sleep 31
 echo "=== EVENT time 2310 ==="
 echo ">>> ip netns exec p06s06 ip addr del 10.55.97.1/30 dev p06s06LinkToGS"
 ip netns exec p06s06 ip addr del 10.55.97.1/30 dev p06s06LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.55.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.55.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.55.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.55.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p06s06 ip link | grep p06s06LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s06 ip link | grep p06s06LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -15011,8 +15011,8 @@ sleep 59
 echo "=== EVENT time 2660 ==="
 echo ">>> ip netns exec p02s07 ip addr add 10.24.97.1/30 dev p02s07LinkToGS"
 ip netns exec p02s07 ip addr add 10.24.97.1/30 dev p02s07LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.24.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.24.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.24.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.24.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p02s07 ip link | grep p02s07LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s07 ip link | grep p02s07LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 4.0"
@@ -15419,8 +15419,8 @@ sleep 2
 echo "=== EVENT time 2722 ==="
 echo ">>> ip netns exec p02s07 ip addr del 10.24.97.1/30 dev p02s07LinkToGS"
 ip netns exec p02s07 ip addr del 10.24.97.1/30 dev p02s07LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.24.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.24.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.24.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.24.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p02s07 ip link | grep p02s07LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s07 ip link | grep p02s07LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -15435,8 +15435,8 @@ sleep 3
 echo "=== EVENT time 2725 ==="
 echo ">>> ip netns exec p02s07 ip addr add 10.24.98.1/30 dev p02s07LinkToGS"
 ip netns exec p02s07 ip addr add 10.24.98.1/30 dev p02s07LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.24.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.24.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.24.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.24.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p02s07 ip link | grep p02s07LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s07 ip link | grep p02s07LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 4.0"
@@ -16011,8 +16011,8 @@ sleep 17
 echo "=== EVENT time 2786 ==="
 echo ">>> ip netns exec p02s07 ip addr del 10.24.98.1/30 dev p02s07LinkToGS"
 ip netns exec p02s07 ip addr del 10.24.98.1/30 dev p02s07LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.24.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.24.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.24.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.24.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p02s07 ip link | grep p02s07LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s07 ip link | grep p02s07LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -16395,8 +16395,8 @@ sleep 25
 echo "=== EVENT time 2900 ==="
 echo ">>> ip netns exec p06s05 ip addr add 10.54.98.1/30 dev p06s05LinkToGS"
 ip netns exec p06s05 ip addr add 10.54.98.1/30 dev p06s05LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.54.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.54.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.54.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.54.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p06s05 ip link | grep p06s05LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s05 ip link | grep p06s05LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 6.0"
@@ -16423,8 +16423,8 @@ sleep 30
 echo "=== EVENT time 2961 ==="
 echo ">>> ip netns exec p06s05 ip addr del 10.54.98.1/30 dev p06s05LinkToGS"
 ip netns exec p06s05 ip addr del 10.54.98.1/30 dev p06s05LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.54.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.54.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.54.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.54.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p06s05 ip link | grep p06s05LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s05 ip link | grep p06s05LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -16439,8 +16439,8 @@ sleep 3
 echo "=== EVENT time 2964 ==="
 echo ">>> ip netns exec p06s05 ip addr add 10.54.97.1/30 dev p06s05LinkToGS"
 ip netns exec p06s05 ip addr add 10.54.97.1/30 dev p06s05LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.54.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.54.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.54.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.54.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p06s05 ip link | grep p06s05LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s05 ip link | grep p06s05LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 4.0"
@@ -16835,8 +16835,8 @@ sleep 20
 echo "=== EVENT time 3026 ==="
 echo ">>> ip netns exec p06s05 ip addr del 10.54.97.1/30 dev p06s05LinkToGS"
 ip netns exec p06s05 ip addr del 10.54.97.1/30 dev p06s05LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.54.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.54.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.54.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.54.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p06s05 ip link | grep p06s05LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p06s05 ip link | grep p06s05LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -19067,8 +19067,8 @@ sleep 9
 echo "=== EVENT time 3376 ==="
 echo ">>> ip netns exec p02s06 ip addr add 10.23.97.1/30 dev p02s06LinkToGS"
 ip netns exec p02s06 ip addr add 10.23.97.1/30 dev p02s06LinkToGS
-echo ">>> ip netns exec gs1 ip addr add 10.97.23.2/30 dev ifgs97"
-ip netns exec gs1 ip addr add 10.97.23.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr add 10.23.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr add 10.23.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p02s06 ip link | grep p02s06LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s06 ip link | grep p02s06LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 4.0"
@@ -19279,8 +19279,8 @@ sleep 18
 echo "=== EVENT time 3438 ==="
 echo ">>> ip netns exec p02s06 ip addr del 10.23.97.1/30 dev p02s06LinkToGS"
 ip netns exec p02s06 ip addr del 10.23.97.1/30 dev p02s06LinkToGS
-echo ">>> ip netns exec gs1 ip addr del 10.97.23.2/30 dev ifgs97"
-ip netns exec gs1 ip addr del 10.97.23.2/30 dev ifgs97
+echo ">>> ip netns exec gs1 ip addr del 10.23.97.2/30 dev ifgs97"
+ip netns exec gs1 ip addr del 10.23.97.2/30 dev ifgs97
 echo ">>> iface=$(ip netns exec p02s06 ip link | grep p02s06LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s06 ip link | grep p02s06LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
@@ -19295,8 +19295,8 @@ sleep 4
 echo "=== EVENT time 3442 ==="
 echo ">>> ip netns exec p02s06 ip addr add 10.23.98.1/30 dev p02s06LinkToGS"
 ip netns exec p02s06 ip addr add 10.23.98.1/30 dev p02s06LinkToGS
-echo ">>> ip netns exec gs2 ip addr add 10.98.23.2/30 dev ifgs98"
-ip netns exec gs2 ip addr add 10.98.23.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr add 10.23.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr add 10.23.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p02s06 ip link | grep p02s06LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s06 ip link | grep p02s06LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 3.0"
@@ -19871,8 +19871,8 @@ sleep 2
 echo "=== EVENT time 3502 ==="
 echo ">>> ip netns exec p02s06 ip addr del 10.23.98.1/30 dev p02s06LinkToGS"
 ip netns exec p02s06 ip addr del 10.23.98.1/30 dev p02s06LinkToGS
-echo ">>> ip netns exec gs2 ip addr del 10.98.23.2/30 dev ifgs98"
-ip netns exec gs2 ip addr del 10.98.23.2/30 dev ifgs98
+echo ">>> ip netns exec gs2 ip addr del 10.23.98.2/30 dev ifgs98"
+ip netns exec gs2 ip addr del 10.23.98.2/30 dev ifgs98
 echo ">>> iface=$(ip netns exec p02s06 ip link | grep p02s06LinkToGS | awk -F ":" '{print $1}')"
 iface=$(ip netns exec p02s06 ip link | grep p02s06LinkToGS | awk -F ":" '{print $1}')
 echo ">>> /home/pote/ItS-IoT/updatemap --dev $iface --delay 0.0"
