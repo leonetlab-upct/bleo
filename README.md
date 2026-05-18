@@ -230,7 +230,7 @@ When the emulation has finished, shut it down by running:
 
 ## Miscellanea
 
-Each network element is assigned a unique `ID`. Satellite IDs range from 1 to `maxp` × `maxs`, while ground station IDs start from `maxp` × `maxs` + 1. The maximum allowed `ID` value is 2047 (11 bits). For example, if `maxp`=12, `maxs`=24, and `numgs`=2, satellite IDs range from 1 to 288, while ground station IDs are 289 and 290.
+Each network element is assigned a unique `ID`. Satellite IDs range from 1 to `maxp` × `maxs`, while ground station IDs start from `maxp × maxs + 1`. The maximum allowed `ID` value is 2047 (11 bits). For example, if `maxp`=12, `maxs`=24, and `numgs`=2, satellite IDs range from 1 to 288, while ground station IDs are 289 and 290.
 
 Each network element is associated with a Docker container name. Satellite containers follow the format `pXXsYY`, where `XX` indicates the orbital plane and `YY` the satellite index within that plane. Ground station containers follow the format `gsN`, where `N` is the ground station number starting from 1, although their internal IDs start from `maxp × maxs + 1`. Terminal nodes follow the format `termN`, where `N` is the terminal number starting from 1, with internal IDs assigned after the ground stations. For example, if `maxp=12` and `maxs=24`, `p00s00` corresponds to the satellite with `ID=1`, while `p11s23` corresponds to `ID=288`. In that case, the first ground station has internal `ID=289` but its Docker container is named `gs1`. If `numterm=2`, the terminal nodes would be named `term1` and `term2`, with internal IDs assigned after the ground stations.
 
