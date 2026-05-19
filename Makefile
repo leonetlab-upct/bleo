@@ -19,7 +19,7 @@ updatemap: updatemap.o
 	$(CXX) -o updatemap updatemap.o -lbpf
 
 setprop.o: setprop.c
-	clang -target bpf -O2 -g -c setprop.c -o setprop.o
+	clang -target bpf -O2 -g -I/usr/include/x86_64-linux-gnu -c setprop.c -o setprop.o
 
 tracer.o: tracer.c
 	$(CXX) -c $(COPTS) tracer.c
