@@ -80,7 +80,7 @@ bLEO requires a Docker image containing the necessary networking tools (e.g., FR
 
 To build the image, run:
 
-`docker build -t frr_ditg:v1 . --no-cache`
+`sudo docker build -t frr_ditg:v1 . --no-cache`
 
 Make sure that the image name matches the value specified in the `bleo.conf` file:
 `docker_img="frr_ditg:v1"`
@@ -118,8 +118,11 @@ Run a minimal bLEO scenario using the default configuration:
 git clone https://github.com/leonetlab-upct/bleo.git ~/bleo
 cd ~/bleo
 
+# Install binaries system-wide
+sudo cp updatemap tracer setprop.o /usr/local/bin/
+
 # Build Docker image
-docker build -t frr_ditg:v1 . --no-cache
+sudo docker build -t frr_ditg:v1 . --no-cache
 
 # Install Python dependencies
 python3 -m pip install sgp4 skyfield numpy
@@ -142,7 +145,7 @@ The following paths assume that bLEO is located in `~/bleo`. Below is a brief ex
 
 `docker_img="frr_ditg:v1"`
 
-This is the name of the Docker image used to emulate each LEO satellite, ground station, and terminal (it is assumed that Docker is properly installed and running on the system). A `Dockerfile` is provided for building an image based on Ubuntu with the utilities `frr` (OSPF), `ditg` (Distributed Internet Traffic Generator) and `iperf` already installed. To build this Docker image, run: `docker build -t frr_ditg:v1 . --no-cache`
+This is the name of the Docker image used to emulate each LEO satellite, ground station, and terminal (it is assumed that Docker is properly installed and running on the system). A `Dockerfile` is provided for building an image based on Ubuntu with the utilities `frr` (OSPF), `ditg` (Distributed Internet Traffic Generator) and `iperf` already installed. To build this Docker image, run: `sudo docker build -t frr_ditg:v1 . --no-cache`
 
 `updatemap=/usr/local/bin/updatemap`
 
