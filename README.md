@@ -53,7 +53,7 @@ The following tools are only required if you need to rebuild the native utilitie
 
 - `make`
 - `gcc`
-- `clang` / LLVM toolchain
+- `clang` / `llvm` toolchain
 - `libbpf` development package (version 1.x), e.g.:
   - `libbpf-dev` on Ubuntu/Debian
   - `libbpf-devel` on RHEL/Fedora
