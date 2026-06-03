@@ -11,7 +11,6 @@ trap ctrlc SIGINT
 
 # global variables
 down=0
-polar="no"
 mkdir -p /var/run/netns
 mkdir -p /sys/fs/bpf/tc/globals
 
@@ -461,19 +460,6 @@ echo "done!"
 
 # Starting OSPF
 if [ "$ospf" = "yes" ] && [ "$ip" = "yes" ] ; then
-if [ "$polar" = "yes" ]; then
-   echo -n "Disconnection east interfaces in polar zones..."
-   for pair in $(echo $polarrange | tr ";" "\n"); do
-       firstS=$((10#${pair:0:2}))
-       lastS=$((10#${pair:3}))
-       for (( p=0; p<$maxp; p++ )); do
-           for (( s=$firstS; s<=$lastS; s++ )); do
-               node=`printf "p%02ds%02d" $p $s`
-               ip netns exec $node ip link set ${node}east down
-           done
-       done
-   done
-fi
    mk_frr;
    for (( p=0; p<$maxp; p++ )); do
      for (( s=0; s<$maxs; s++ )); do
