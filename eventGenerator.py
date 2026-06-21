@@ -472,12 +472,12 @@ if __name__ == "__main__":
     for i in range(0, duration):
         for j in range(0, sat_num):
             if sat_lla[i][j][0]>=float(0.0): #HEMISFERIO NORTE
-                if sat_lla[i][j][0]>=float(60.0):
+                if args.inclination >= 70 and sat_lla[i][j][0]>=float(60.0):
                     ISL_matrix[j]=0
                 else:
                     ISL_matrix[j]=1
             else: #HEMISFERIO SUR
-                if sat_lla[i][j][0]<=float(-60.0):
+                if args.inclination >= 70 and sat_lla[i][j][0]<=float(-60.0):
                     ISL_matrix[j]=0
                 else:
                     ISL_matrix[j]=1
@@ -527,16 +527,16 @@ if __name__ == "__main__":
         l2 = topo_duration[i + 1]
         l1ISL = ISL_connections[i]
         l2ISL = ISL_connections[i + 1]
-        l2delay = change_delay[i+1]
+        l2delay = change_delay[i + 1]
         if (l1 == l2).all() and (l1ISL == l2ISL).all() and (l2delay == 0).all():
             continue
         else:
-            changetime.append(i)
+            changetime.append(i + 1)
+
     pretime = 0
     for item in changetime:
         Duration.append(item - pretime)
         pretime = item
-    #Duration.append(60)
     Duration.append(args.duration - pretime)
 
     # ==================================================
@@ -605,7 +605,7 @@ if __name__ == "__main__":
         (now_lines_delay == 0).all():
             continue
 
-        events_file.write(f'\necho "=== EVENT time {i+2} ==="\n')
+        events_file.write(f'\necho "=== EVENT time {i+1} ==="\n')
 
         # ADD LINKS
         for j in range(no_fac):
